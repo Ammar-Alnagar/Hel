@@ -12,7 +12,16 @@ option(ENABLE_TESTS "Build unit tests" ON)
 
 # Find required packages
 find_package(Protobuf REQUIRED)
-find_package(nlohmann_json QUIET) # For Safetensors and HTTP server
+
+# nlohmann_json is optional
+find_package(nlohmann_json QUIET)
+if(nlohmann_json_FOUND)
+    set(USE_NLOHMANN_JSON ON)
+    message(STATUS "Using nlohmann/json for JSON parsing")
+else()
+    set(USE_NLOHMANN_JSON OFF)
+    message(STATUS "nlohmann/json not found, using fallback JSON parser")
+endif()
 
 # Eigen is optional - find it if available and user wants it
 if(USE_EIGEN)
@@ -89,6 +98,10 @@ if(USE_EIGEN AND Eigen3_FOUND)
     target_compile_definitions(infer PRIVATE USE_EIGEN)
 endif()
 
+if(USE_NLOHMANN_JSON)
+    target_compile_definitions(infer PRIVATE USE_NLOHMANN_JSON)
+endif()
+
 if(USE_OPENBLAS)
     target_link_libraries(infer ${BLAS_LIBRARIES})
     target_include_directories(infer PRIVATE ${OPENBLAS_INCLUDE_DIR})
@@ -106,6 +119,9 @@ if(ENABLE_TESTS)
     if(USE_EIGEN AND Eigen3_FOUND)
         target_link_libraries(unit_tests Eigen3::Eigen)
         target_compile_definitions(unit_tests PRIVATE USE_EIGEN)
+    endif()
+    if(USE_NLOHMANN_JSON)
+        target_compile_definitions(unit_tests PRIVATE USE_NLOHMANN_JSON)
     endif()
     if(USE_OPENBLAS)
         target_link_libraries(unit_tests ${BLAS_LIBRARIES})

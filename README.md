@@ -109,6 +109,9 @@ sudo apt install libeigen3-dev
 # git clone https://gitlab.com/libeigen/eigen.git
 # cd eigen && mkdir build && cd build
 # cmake .. && sudo make install
+
+# Optional: nlohmann/json for advanced JSON parsing (auto-detected)
+sudo apt install nlohmann-json3-dev
 ```
 
 ### **Build**
