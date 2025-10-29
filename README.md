@@ -1,4 +1,4 @@
-# 🚀 Helios Engine - High-Performance LLM Inference
+# 🚀 Hel - High-Performance LLM Inference
 
 <div align="center">
   <h3>Minimal, CPU-first LLM inference engine with quantization support</h3>
@@ -10,7 +10,7 @@
 
 ## 🌟 Overview
 
-Helios Engine is a lightweight, high-performance C++ inference engine designed for Large Language Models (LLMs). Built with a focus on **correctness**, **modularity**, and **performance**, it provides:
+Hel is a lightweight, high-performance C++ inference engine designed for Large Language Models (LLMs). Built with a focus on **correctness**, **modularity**, and **performance**, it provides:
 
 - ⚡ **Quantized Inference**: Q4/Q8 row-wise quantization for memory-efficient inference
 - 🎯 **Accuracy First**: Dequantize-on-load baseline ensuring numerical correctness
@@ -22,7 +22,7 @@ Helios Engine is a lightweight, high-performance C++ inference engine designed f
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                            Helios Engine                               │
+│                            Hel                               │
 ├─────────────────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
 │  │   Loaders   │  │   Tensor    │  │  Optimized  │  │   Quantization  │  │
